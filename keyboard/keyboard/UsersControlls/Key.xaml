@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="keyboard.UsersControlls.Key"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:keyboard.UsersControlls"
+             mc:Ignorable="d" 
+             d:DesignHeight="43.1" d:DesignWidth="44.5">
+    <UserControl.Resources>
+        <Style TargetType="Border" x:Key="borderStyle" >
+            <Setter Property="BorderBrush" Value="#90A3BF" />
+            <Setter Property="BorderThickness" Value="1.2"/>
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#F8F9FC" Offset="0.0" />
+                        <GradientStop Color="#F8F9FC" Offset="0.25"/>
+                        <GradientStop Color="#F8F9FC" Offset="0.75"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style TargetType="TextBlock" x:Key="normal_key">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="#1A202C" />
+            <Setter Property="FontSize" Value="15"  />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+        
+        <Style TargetType="TextBlock" x:Key="normal_sing">
+            <Setter Property="Height" Value="0" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="normal_key_dowen_left">
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Foreground" Value="#1A202C" />
+            <Setter Property="FontSize" Value="15"  />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="Margin" Value="3 , 0 , 0 ,0" />
+        </Style>
+        <Style TargetType="TextBlock" x:Key="normal_key_dowen_right">
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Foreground" Value="#1A202C" />
+            <Setter Property="FontSize" Value="15"  />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="Margin" Value="0 , 0 , 3 ,0" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="singWithKey">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="#1A202C" />
+            <Setter Property="FontSize" Value="15"  />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+
+
+    </UserControl.Resources>
+    <Border Style="{StaticResource borderStyle}" x:Name="border_key_sing">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="auto" />
+                <RowDefinition MinHeight=".5"  />
+            </Grid.RowDefinitions>
+            <TextBlock  Grid.Row="0" Text="k" x:Name="sing" Style="{StaticResource singWithKey}" />
+            <TextBlock  Grid.Row="1" Text="k" x:Name="key" Style="{StaticResource singWithKey}" />
+        </Grid>
+    </Border>
+</UserControl>

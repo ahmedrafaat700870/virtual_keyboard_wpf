@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Jpd6eChIxp2Wly6efoEd7L6ks5Mog39rlDeVN/sBz+bVuUYeKV4idkCGPY088ng2bBkkk7og6PRyQ22LGD6K8g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\TEFA\\Desktop\\virtual keyboard\\keyboard\\keyboard\\keyboard.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\TEFA\\.nuget\\packages\\inputsimulatorcore\\1.0.5\\inputsimulatorcore.1.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}
