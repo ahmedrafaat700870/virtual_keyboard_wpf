@@ -5,10 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:keyboard.UsersControlls"
              mc:Ignorable="d" 
+             Width="894"
+             Height="250"
              d:DesignHeight="200" d:DesignWidth="894">
     <UserControl.Resources>
         <Style TargetType="Grid" x:Key="mainGrid">
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Background"  Value="Transparent" />
+
         </Style>
     </UserControl.Resources>
     <Grid Style="{StaticResource mainGrid}">
@@ -18,13 +21,50 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <UniformGrid Rows="1" Columns="17" Grid.Row="0" x:Name="grid_0"></UniformGrid> 
+        <!--
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+                <ColumnDefinition Width="0.611*"/>
+            </Grid.ColumnDefinitions>
+            <UserControl Grid.Column="0" x:Name="q" />
+            <UserControl Grid.Column="1" x:Name="w" />
+            <UserControl Grid.Column="2" x:Name="e" />
+            <UserControl Grid.Column="3" x:Name="r" />
+            <UserControl Grid.Column="4" x:Name="t" />
+            <UserControl Grid.Column="5" x:Name="y" />
+            <UserControl Grid.Column="6" x:Name="u" />
+            <UserControl Grid.Column="7" x:Name="i" />
+            <UserControl Grid.Column="8" x:Name="o" />
+            <UserControl Grid.Column="9" x:Name="p" />
+            <UserControl Grid.Column="10" x:Name="kerly_left" />
+            <UserControl Grid.Column="11" x:Name="kerly_right" />
+            <UserControl Grid.Column="12" x:Name="piop" />
+            <UserControl Grid.Column="13" x:Name="back" />
+            <UserControl Grid.Column="14" x:Name="_7" />
+            <UserControl Grid.Column="15" x:Name="_8" />
+            <UserControl Grid.Column="16" x:Name="_9" />
+        </Grid>
+        -->
 
-        <UniformGrid Grid.Row="1" x:Name="grid_1"></UniformGrid>
-
-        <UniformGrid Grid.Row="2" x:Name="grid_2"></UniformGrid>
-
-        <UniformGrid Grid.Row="3" x:Name="grid_3"></UniformGrid>
-        
+        <UniformGrid Rows="0"  Grid.ColumnSpan="5" Columns="18" Grid.Row="0" x:Name="grid_0"></UniformGrid>
+        <UniformGrid  Rows="0" Columns="16" Grid.Row="1" x:Name="grid_1"></UniformGrid>
+        <UniformGrid Rows="0" Columns="16" Grid.Row="2" x:Name="grid_2"></UniformGrid>
+        <UniformGrid Rows="0" Columns="9" Grid.Row="3" x:Name="grid_3"></UniformGrid>
     </Grid>
 </UserControl>

@@ -39,11 +39,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\TEFA\\Desktop\\virtual keyboard\\keyboard\\keyboard\\keyboard.csproj",
+      "projectUniqueName": "C:\\Users\\TEFA\\Desktop\\virtual keyboard\\New folder\\virtual_keyboard_wpf\\keyboard\\keyboard\\keyboard.csproj",
       "projectName": "keyboard",
-      "projectPath": "C:\\Users\\TEFA\\Desktop\\virtual keyboard\\keyboard\\keyboard\\keyboard.csproj",
+      "projectPath": "C:\\Users\\TEFA\\Desktop\\virtual keyboard\\New folder\\virtual_keyboard_wpf\\keyboard\\keyboard\\keyboard.csproj",
       "packagesPath": "C:\\Users\\TEFA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\TEFA\\Desktop\\virtual keyboard\\keyboard\\keyboard\\obj\\",
+      "outputPath": "C:\\Users\\TEFA\\Desktop\\virtual keyboard\\New folder\\virtual_keyboard_wpf\\keyboard\\keyboard\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

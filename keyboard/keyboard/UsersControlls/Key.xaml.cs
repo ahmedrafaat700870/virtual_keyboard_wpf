@@ -27,22 +27,23 @@ namespace keyboard.UsersControlls
         {
             InitializeComponent();
         }
-
+        
+        public void setMargin(double left , double up , double right , double dowen)
+        {
+            this.Margin = new Thickness(left , up , right , dowen);
+        }
         public void setISenderKey(ISenderKey senderKey)
         {
             SenderKey = senderKey;
         }
-
         public void setKey(string newKey)
         {
             this.key.Text = newKey;
         }
-     
         public void setSing(string sing)
         {
             this.sing.Text = sing;
         }
-
         public void setWidthAndHeigth(double width  , double height)
         {
             this.Width = width;
@@ -63,13 +64,11 @@ namespace keyboard.UsersControlls
             this.sing.Style = this.Resources["normal_sing"] as Style;
             this.key.Style = this.Resources["normal_key_dowen_right"] as Style;
         }
-
         public void singWithKey()
         {
             this.sing.Style = this.Resources["singWithKey"] as Style;
             this.key.Style = this.Resources["singWithKey"] as Style;
         }
-       
         public void toUpperCase()
         {
             

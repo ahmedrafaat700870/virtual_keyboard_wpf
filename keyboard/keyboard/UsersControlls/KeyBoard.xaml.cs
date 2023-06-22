@@ -31,12 +31,18 @@ namespace keyboard.UsersControlls
             InitKyes initKyes = new InitKyes(this.senderkey);
         }
 
-        
-
-        public void IntitializeGrid_0()
+        public void Init()
         {
-            this.grid_0.Children.Clear();
-
+            Keys = new Dictionary<string, Key>();
+            InitKyes initkeys = new InitKyes(senderkey);
+            Keys = initkeys.getKeys();
+            IntitializeGrid_0();
+            IntitializeGrid_1();
+            IntitializeGrid_2();
+            IntitializeGrid_3();
+        }
+        private void IntitializeGrid_0()
+        {
             addChilderToUniGrid(this.grid_0 ,Keys["q"]);
             addChilderToUniGrid(this.grid_0  ,Keys["w"]);
             addChilderToUniGrid(this.grid_0 ,Keys["e"]);
@@ -52,20 +58,11 @@ namespace keyboard.UsersControlls
             addChilderToUniGrid(this.grid_0, Keys["|"]);
             addChilderToUniGrid(this.grid_0, Keys["back"]);
             addChilderToUniGrid(this.grid_0, Keys["7"]);
-            addChilderToUniGrid(this.grid_0, Keys["7"]);
             addChilderToUniGrid(this.grid_0, Keys["8"]);
             addChilderToUniGrid(this.grid_0, Keys["9"]);
 
         }
-       
-        public void addChilderToUniGrid(UniformGrid grid ,  Key? key)
-        {
-            if (key is null)
-                return;
-            grid.Children.Add(key);
-        }
-
-        public void IntitializeGrid_1()
+        private void IntitializeGrid_1()
         {
             
             addChilderToUniGrid(this.grid_1, Keys["capsLoock"]);
@@ -85,17 +82,54 @@ namespace keyboard.UsersControlls
             addChilderToUniGrid(this.grid_1, Keys["5"]);
             addChilderToUniGrid(this.grid_1, Keys["6"]);
         }
-
-        
-
-        public void IntitializeGrid_2()
+        private void IntitializeGrid_2()
         {
+
+            addChilderToUniGrid(this.grid_2, Keys["shift"]);
+            addChilderToUniGrid(this.grid_2, Keys["z"]);
+            addChilderToUniGrid(this.grid_2, Keys["x"]);
+            addChilderToUniGrid(this.grid_2, Keys["c"]);
+            addChilderToUniGrid(this.grid_2, Keys["v"]);
+            addChilderToUniGrid(this.grid_2, Keys["b"]);
+            addChilderToUniGrid(this.grid_2, Keys["n"]);
+            addChilderToUniGrid(this.grid_2, Keys["m"]);
+            addChilderToUniGrid(this.grid_2, Keys["."]);
+            addChilderToUniGrid(this.grid_2, Keys["/"]);
+            addChilderToUniGrid(this.grid_2, Keys[","]);
+            addChilderToUniGrid(this.grid_2, Keys["up"]);
+            addChilderToUniGrid(this.grid_2, Keys["delete"]);
+            addChilderToUniGrid(this.grid_2, Keys["1"]);
+            addChilderToUniGrid(this.grid_2, Keys["2"]);
+            addChilderToUniGrid(this.grid_2, Keys["3"]);
+
+        }
+        private void IntitializeGrid_3()
+        {
+            addChilderToUniGrid(this.grid_3 , Keys["eng"]);
+            addChilderToUniGrid(this.grid_3 , Keys["ctrl"]);
+            addChilderToUniGrid(this.grid_3 , Keys["space"]);
+            addChilderToUniGrid(this.grid_3 , Keys["left"]);
+            addChilderToUniGrid(this.grid_3, Keys["dowen"]);
+            addChilderToUniGrid(this.grid_3, Keys["right"]);
+            addChilderToUniGrid(this.grid_3, Keys["at_sing"]);
+            addChilderToUniGrid(this.grid_3, Keys["0"]);
+            addChilderToUniGrid(this.grid_3, Keys["._algone"]);
+        }
+        private void addChilderToUniGrid(UniformGrid grid ,  Key? key)
+        {
+            if (key is null)
+                return;
+            grid.Children.Add(key);
+        }
+
+        private void addChilderToUniGrid (UniformGrid grid, Key? key , int columnSpacn)
+        {
+            if (key is null)
+                return;
 
         }
 
-        public void IntitializeGrid_3()
-        {
 
-        }
+
     }
 }

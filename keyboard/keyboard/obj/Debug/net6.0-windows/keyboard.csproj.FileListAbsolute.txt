@@ -23,3 +23,30 @@ C:\Users\TEFA\Desktop\virtual keyboard\keyboard\keyboard\obj\Debug\net6.0-window
 C:\Users\TEFA\Desktop\virtual keyboard\keyboard\keyboard\obj\Debug\net6.0-windows\ref\keyboard.dll
 C:\Users\TEFA\Desktop\virtual keyboard\keyboard\keyboard\obj\Debug\net6.0-windows\UsersControlls\Key.g.cs
 C:\Users\TEFA\Desktop\virtual keyboard\keyboard\keyboard\obj\Debug\net6.0-windows\UsersControlls\Key.baml
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.csproj.AssemblyReference.cache
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\UsersControlls\Key.g.cs
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\UsersControlls\KeyBoard.g.cs
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard_MarkupCompile.cache
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard_MarkupCompile.lref
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.dll
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\refint\keyboard.dll
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.pdb
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\bin\Debug\net6.0-windows\keyboard.exe
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\bin\Debug\net6.0-windows\keyboard.deps.json
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\bin\Debug\net6.0-windows\keyboard.runtimeconfig.json
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\bin\Debug\net6.0-windows\keyboard.dll
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\bin\Debug\net6.0-windows\keyboard.pdb
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\bin\Debug\net6.0-windows\WindowsInput.dll
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\UsersControlls\Key.baml
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\UsersControlls\KeyBoard.baml
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.g.resources
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.AssemblyInfoInputs.cache
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.AssemblyInfo.cs
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.csproj.CoreCompileInputs.cache
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.csproj.CopyComplete
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.genruntimeconfig.cache
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\ref\keyboard.dll

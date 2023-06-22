@@ -15,13 +15,20 @@ namespace keyboard.UsersControlls
             this.senderKey = senderkey;
             
         }
-
-        public void Init()
+        public Dictionary<string, Key> getKeys()
+        {
+            if (this.Keys is null)
+                Init();
+            return this.Keys!;
+        }
+        private void Init()
         {
             this.Keys = new Dictionary<string, Key>();
 
             init_first_row();
             init_second_row();
+            init_thired_row();
+            init_fourth_row();
         }
         // first row start 
         private void init_first_row()
@@ -49,13 +56,7 @@ namespace keyboard.UsersControlls
             Keys.Add("8", init_8());
             Keys.Add("9", init_9());
         }
-        public Dictionary<string, Key> getKeys()
-        {
-            if (this.Keys is null)
-                Init();
-            return this.Keys!;
-        }
-        public Key init_q()
+        private Key init_q()
         {
             Key key = new Key();
             key.numberKey();
@@ -63,10 +64,10 @@ namespace keyboard.UsersControlls
             key.setWidthAndHeigth(44 , 43);
             key.setKey("q");
             key.toLowerCase();
+            key.setMargin( 0 , 0 , 0 , 0);
             return key;
         }
-
-        public Key init_w()
+        private Key init_w()
         {
             Key key = new Key();
             key.numberKey();
@@ -76,8 +77,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_e()
+        private Key init_e()
         {
             Key key = new Key();
             key.numberKey();
@@ -87,8 +87,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_r()
+        private Key init_r()
         {
             Key key = new Key();
             key.numberKey();
@@ -98,8 +97,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_t()
+        private Key init_t()
         {
             Key key = new Key();
             key.numberKey();
@@ -109,8 +107,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_y()
+        private Key init_y()
         {
             Key key = new Key();
             key.numberKey();
@@ -120,8 +117,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_u()
+        private Key init_u()
         {
             Key key = new Key();
             key.numberKey();
@@ -131,8 +127,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_i()
+        private Key init_i()
         {
             Key key = new Key();
             key.numberKey();
@@ -142,8 +137,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_o()
+        private Key init_o()
         {
             Key key = new Key();
             key.numberKey();
@@ -153,8 +147,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_p()
+        private Key init_p()
         {
             Key key = new Key();
             key.numberKey();
@@ -164,8 +157,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_keryl_left()
+        private Key init_keryl_left()
         {
             Key key = new Key();
             key.singWithKey();
@@ -176,8 +168,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_keryl_right()
+        private Key init_keryl_right()
         {
             Key key = new Key();
             key.singWithKey();
@@ -188,8 +179,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_pipe()
+        private Key init_pipe()
         {
             Key key = new Key();
             key.singWithKey();
@@ -200,8 +190,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_back()
+        private Key init_back()
         {
             Key key = new Key();
             key.keyDowenRight();
@@ -211,8 +200,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_7()
+        private Key init_7()
         {
             Key key = new Key();
             key.numberKey();
@@ -222,8 +210,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_8()
+        private Key init_8()
         {
             Key key = new Key();
             key.numberKey();
@@ -233,8 +220,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_9()
+        private Key init_9()
         {
             Key key = new Key();
             key.numberKey();
@@ -267,8 +253,7 @@ namespace keyboard.UsersControlls
             this.Keys.Add("5" , init_5());
             this.Keys.Add("6" , init_6());
         }
-
-        public Key init_caps_lock()
+        private Key init_caps_lock()
         {
             Key key = new Key();
             key.keyDowenLeft();
@@ -276,10 +261,10 @@ namespace keyboard.UsersControlls
             key.setWidthAndHeigth(74.72, 43);
             key.setKey("caps lock");
             key.toLowerCase();
+            key.setMargin(0, 0, 0, 0);
             return key;
         }
-
-        public Key init_a()
+        private Key init_a()
         {
             Key key = new Key();
             key.numberKey();
@@ -289,8 +274,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_s()
+        private Key init_s()
         {
             Key key = new Key();
             key.numberKey();
@@ -300,8 +284,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_d()
+        private Key init_d()
         {
             Key key = new Key();
             key.numberKey();
@@ -311,8 +294,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_f()
+        private Key init_f()
         {
             Key key = new Key();
             key.numberKey();
@@ -322,8 +304,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_g()
+        private Key init_g()
         {
             Key key = new Key();
             key.numberKey();
@@ -333,8 +314,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_h()
+        private Key init_h()
         {
             Key key = new Key();
             key.numberKey();
@@ -344,8 +324,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_j()
+        private Key init_j()
         {
             Key key = new Key();
             key.numberKey();
@@ -355,8 +334,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_k()
+        private Key init_k()
         {
             Key key = new Key();
             key.numberKey();
@@ -366,8 +344,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_l()
+        private Key init_l()
         {
             Key key = new Key();
             key.numberKey();
@@ -377,8 +354,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_simecolen()
+        private Key init_simecolen()
         {
             Key key = new Key();
             key.singWithKey();
@@ -389,8 +365,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_singel_qotiation()
+        private Key init_singel_qotiation()
         {
             Key key = new Key();
             key.singWithKey();
@@ -401,8 +376,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_enter()
+        private Key init_enter()
         {
             Key key = new Key();
             key.keyDowenRight();
@@ -412,8 +386,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_4()
+        private Key init_4()
         {
             Key key = new Key();
             key.numberKey();
@@ -423,8 +396,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_5()
+        private Key init_5()
         {
             Key key = new Key();
             key.numberKey();
@@ -434,8 +406,7 @@ namespace keyboard.UsersControlls
             key.toLowerCase();
             return key;
         }
-
-        public Key init_6()
+        private Key init_6()
         {
             Key key = new Key();
             key.numberKey();
@@ -448,11 +419,297 @@ namespace keyboard.UsersControlls
 
         // second row end
 
+        // start with row 3
 
+        private void init_thired_row()
+        {
+            this.Keys.Add("shift" , init_shift());
+            this.Keys.Add("z" , init_z());
+            this.Keys.Add("x" , init_x());
+            this.Keys.Add("c" , init_c());
+            this.Keys.Add("v" , init_v());
+            this.Keys.Add("b" , init_b());
+            this.Keys.Add("n" , init_n());
+            this.Keys.Add("m" , init_m());
+            this.Keys.Add("." , init_dot());
+            this.Keys.Add("/", init_question_mark());
+            this.Keys.Add(",", init_smarler_than());
+            this.Keys.Add("up", init_up());
+            this.Keys.Add("delete", init_delete());
+            this.Keys.Add("1", init_1());
+            this.Keys.Add("2", init_2());
+            this.Keys.Add("3", init_3());
+        }
+        private Key init_shift()
+        {
+            Key key = new Key();
+            key.keyDowenLeft();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(74.72, 43.1);
+            key.setKey("shift");
+            key.toLowerCase();
+            key.setMargin(0, 0, 0, 0);
+            return key;
+        }
+        private Key init_z()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("z");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_x()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("x");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_c()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("c");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_v()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("v");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_b()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("b");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_n()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("n");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_m()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("m");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_dot()
+        {
+            Key key = new Key();
+            key.singWithKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey(".");
+            key.setSing(">");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_question_mark()
+        {
+            Key key = new Key();
+            key.singWithKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("/");
+            key.setSing("?");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_smarler_than()
+        {
+            Key key = new Key();
+            key.singWithKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey(",");
+            key.setSing("<");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_up()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("up");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_delete()
+        {
+            Key key = new Key();
+            key.keyDowenRight();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(94.83, 43.1);
+            key.setKey("delete");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_1()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("1");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_2()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("2");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_3()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("3");
+            key.toLowerCase();
+            return key;
+        }
+        // end row 3
+        // start with last row
+        private void init_fourth_row()
+        {
+            this.Keys.Add("eng" , init_eng());
+            this.Keys.Add("ctrl" , init_ctrl());
+            this.Keys.Add("space" , init_space());
+            this.Keys.Add("left" , init_left());
+            this.Keys.Add("dowen" , init_dowen());
+            this.Keys.Add("right" , init_right());
+            this.Keys.Add("at_sing" , init_at_sing());
+            this.Keys.Add("0" , init_0());
+            this.Keys.Add("._algone" , init_dot_along());
+        }
+        private Key init_eng()
+        {
+            Key key = new Key();
+            key.keyDowenLeft();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("Eng");
+            key.setMargin(0, 0, 0, 0);
+            //key.toLowerCase();
+            return key;
+        }
+        private Key init_ctrl()
+        {
+            Key key = new Key();
+            key.keyDowenLeft();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(66.09, 43.1);
+            key.setKey("Ctrl");
+            //key.toLowerCase();
+            return key;
+        }
+        private Key init_space()
+        {
+            Key key = new Key();
+            key.keyDowenLeft();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(405.19, 43.1);
+            key.setKey(" ");
+            //key.toLowerCase();
+            return key;
+        }
+        private Key init_left()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("left");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_dowen()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("dowen");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_right()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("right");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_at_sing()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("@");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_0()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey("0");
+            key.toLowerCase();
+            return key;
+        }
+        private Key init_dot_along()
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.setWidthAndHeigth(44.54, 43.1);
+            key.setKey(".");
+            key.toLowerCase();
+            return key;
+        }
 
-
-
-
-
+        // end last row
     }
 }

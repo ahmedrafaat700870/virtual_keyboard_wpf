@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:keyboard.UsersControlls"
              mc:Ignorable="d" 
+             Margin="0 , 0 , 0 ,0"
              d:DesignHeight="43.1" d:DesignWidth="44.5">
     <UserControl.Resources>
         <Style TargetType="Border" x:Key="borderStyle" >
