@@ -32,13 +32,14 @@ namespace keyboard
         private Point dragStartPosition;
 
         private readonly double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
-
+       
         public MainWindow()
         {
             InitializeComponent();
             int width = Convert.ToInt32( screenWidth * 0.75);
             this.Width = width;
             keyboard = new KeyBoard();
+            keyboard.setFocusEl(El);
             keyboard.Init();
             this.mainKeyboard.Content = keyboard.Content;
         }
@@ -46,7 +47,6 @@ namespace keyboard
         private void exit_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             this.Hide();
-            //this.Visibility = Visibility.Hidden;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

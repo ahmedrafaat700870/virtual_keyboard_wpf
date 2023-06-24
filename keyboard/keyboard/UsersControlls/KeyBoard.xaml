@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              Width="894"
              Height="214"
+             Focusable="False"
              d:DesignHeight="200" d:DesignWidth="888">
     <UserControl.Resources>
         <Style TargetType="Grid" x:Key="mainGrid">
@@ -14,7 +15,7 @@
 
         </Style>
     </UserControl.Resources>
-    <Grid Style="{StaticResource mainGrid}">
+    <Grid Focusable="False" Style="{StaticResource mainGrid}">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />

@@ -14,6 +14,7 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         MouseLeftButtonUp="Window_MouseLeftButtonUp"
         MouseMove="Window_MouseMove"
+        Focusable="False"
         >
     <Window.Resources>
         <Style TargetType="Border" x:Key="mainBorder">
@@ -41,6 +42,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".3*"/>
                 <RowDefinition Height=".9*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -51,9 +53,9 @@
                 <TextBlock  Grid.Column="0" Text="ONEPOS Keyboar" Style="{StaticResource mainTextLeft}"/>
                 <TextBlock Cursor="Hand" x:Name="exit" MouseLeftButtonDown="exit_MouseLeftButtonDown" Grid.Column="1" Text="X" Style="{StaticResource mainTextRight}" FontSize="25" />
             </Grid>
-            <Grid Grid.Row="1">
-            </Grid>
-            <UserControl  x:Name="mainKeyboard" Grid.Row="1"/>
+            <TextBox  Grid.Row="1" x:Name="El" />
+            
+            <UserControl   x:Name="mainKeyboard" Grid.Row="2"/>
         </Grid>
     </Border>
 </Window>

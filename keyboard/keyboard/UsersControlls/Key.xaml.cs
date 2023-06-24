@@ -27,15 +27,27 @@ namespace keyboard.UsersControlls
         public Key()
         {
             InitializeComponent();
-            this.MouseLeftButtonDown += clickKey;
         }
 
-        private void clickKey(object sender, MouseButtonEventArgs e)
+
+        public void click_key()
         {
             borderMouseEnter();
             Thread.Sleep(200);
             borderMouseLeave();
+
         }
+
+
+        public void clickUpperCase()
+        {
+            SenderKey.sendKey(this.sing.Text);
+        }
+        public void clickLowerCase()
+        {
+            SenderKey.sendKey(this.key.Text);
+        }
+
 
         public void setMargin(double left , double up , double right , double dowen)
         {
@@ -105,6 +117,13 @@ namespace keyboard.UsersControlls
         private void borderMouseLeave()
         {
             border_key_sing.Style = this.Resources["borderStyle"] as Style;
+        }
+
+        
+
+        private void border_key_sing_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SenderKey.sendKey("j");
         }
     }
 }

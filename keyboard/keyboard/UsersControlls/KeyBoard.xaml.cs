@@ -24,6 +24,12 @@ namespace keyboard.UsersControlls
         private ISenderKey senderkey;
 
         private Dictionary<string  ,Key> Keys = null!;
+        private InitKyes initkeys = null!;
+        private TextBox focusEl = null!;
+        public void setFocusEl(TextBox el)
+        {
+            this.focusEl = el;
+        }
         public KeyBoard()
         {
             InitializeComponent();
@@ -34,7 +40,7 @@ namespace keyboard.UsersControlls
         public void Init()
         {
             Keys = new Dictionary<string, Key>();
-            InitKyes initkeys = new InitKyes(senderkey);
+            initkeys = new InitKyes(senderkey);
             Keys = initkeys.getKeys();
             IntitializeGrid_0();
             IntitializeGrid_1();
@@ -57,6 +63,7 @@ namespace keyboard.UsersControlls
             addChilderToUniGrid(this.row_0_column_0, Keys["}"]);
             addChilderToUniGrid(this.row_0_column_0, Keys["|"]);
             row_0_column_1.Content =  Keys["back"].Content;
+            row_0_column_1.MouseLeftButtonDown += (e, ev) => initkeys.click_back();
             addChilderToUniGrid(this.row_0_column_2, Keys["7"]);
             addChilderToUniGrid(this.row_0_column_2, Keys["8"]);
             addChilderToUniGrid(this.row_0_column_2, Keys["9"]);
@@ -66,8 +73,9 @@ namespace keyboard.UsersControlls
         }
         private void IntitializeGrid_1()
         {
-            this.row_1_column_0.Content = Keys["capsLoock"];
-            
+            this.row_1_column_0.Content = Keys["capsLoock"].Content;
+            row_1_column_0.MouseLeftButtonDown += (e, ev) => initkeys.click_capslk();
+
             addChilderToUniGrid(this.row_1_column_1, Keys["a"]);
             addChilderToUniGrid(this.row_1_column_1, Keys["s"]);
             addChilderToUniGrid(this.row_1_column_1, Keys["d"]);
@@ -80,7 +88,7 @@ namespace keyboard.UsersControlls
             addChilderToUniGrid(this.row_1_column_1, Keys[";"]);
             addChilderToUniGrid(this.row_1_column_1, Keys["'"]);
             this.row_1_column_2.Content = Keys["enter"].Content;
-
+            row_1_column_2.MouseLeftButtonDown += (e, ev) => initkeys.click_back();
             addChilderToUniGrid(this.row_1_column_3, Keys["4"]);
             addChilderToUniGrid(this.row_1_column_3, Keys["5"]);
             addChilderToUniGrid(this.row_1_column_3, Keys["6"]);
@@ -90,6 +98,7 @@ namespace keyboard.UsersControlls
         {
 
             this.row_2_column_0.Content = Keys["shift"].Content;
+            row_2_column_0.MouseLeftButtonDown += (e, ev) => initkeys.click_shift();
 
             addChilderToUniGrid(this.row_2_column_1, Keys["z"]);
             addChilderToUniGrid(this.row_2_column_1, Keys["x"]);
@@ -133,15 +142,12 @@ namespace keyboard.UsersControlls
                 return;
             grid.Children.Add(key);
         }
-
         private void addChilderToUniGrid (UniformGrid grid, Key? key , int columnSpacn)
         {
             if (key is null)
                 return;
 
         }
-
-
 
     }
 }

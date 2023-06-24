@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace keyboard.UsersControlls
 {
@@ -10,10 +14,67 @@ namespace keyboard.UsersControlls
     {
         private readonly ISenderKey senderKey = null!;
         private Dictionary<string, Key> Keys = null!;
+        private bool isUpperCase  = !true;
+        private bool focusShift = false;
+        private TextBox focusEl = null!;
         public InitKyes(ISenderKey senderkey) 
         {
             this.senderKey = senderkey;
             
+        }
+
+        private void to_upper()
+        {
+            isUpperCase = !isUpperCase;
+            foreach(var key in Keys.Keys)
+            {
+                Key k = Keys[key];
+                k.toUpperCase();
+            }
+        }
+        private void to_lower()
+        {
+            isUpperCase = !isUpperCase;
+            foreach (var key in Keys.Keys)
+            {
+                Key k = Keys[key];
+                k.toLowerCase();
+            }
+        }
+        public void click_shift()
+        {
+            focusShift = !focusShift; 
+            if(isUpperCase)
+            {
+                to_lower();
+            } else
+            {
+                to_upper();
+            }
+        }
+        public void click_back()
+        {
+            if (focusEl is null)
+                return;
+            string text = focusEl.Text;
+            focusEl.Text = text.Remove(text.Length-1);
+        }
+        public void click_capslk()
+        {
+            if (isUpperCase) to_lower();
+            else to_upper();
+        }
+
+        public void setFocusEl(TextBox el)
+        {
+            this.focusEl = el;
+        }
+        private void FocusEl()
+        {
+            if(focusEl != null)
+            {
+                this.focusEl.Focus();
+            }
         }
         public Dictionary<string, Key> getKeys()
         {
@@ -30,7 +91,6 @@ namespace keyboard.UsersControlls
             init_thired_row();
             init_fourth_row();
         }
-        // first row start 
         private void init_first_row()
         {
             // first row 
@@ -56,194 +116,159 @@ namespace keyboard.UsersControlls
             Keys.Add("8", init_8());
             Keys.Add("9", init_9());
         }
-        private Key init_q()
+
+        private Key init_key(string _key , string? sing = null!)
         {
             Key key = new Key();
             key.numberKey();
             key.setISenderKey(senderKey);
-               
-            key.setKey("q");
+            key.Focusable = false;
+            key.setKey(_key);
+            if(sing is not null)
+                key.setSing(sing);
             key.toLowerCase();
-            key.setMargin( 6 , 0 , 0 , 0);
+            key.setMargin(6, 0, 0, 0);
+            
             return key;
         }
-        private Key init_w()
+        private Key init_key(string _key,  Action<object> action , string sing = null!)
         {
             Key key = new Key();
             key.numberKey();
             key.setISenderKey(senderKey);
-             
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("w");
+            key.Focusable = false;
+            key.setKey(_key);
+            if (sing is not null)
+                key.setSing(sing);
             key.toLowerCase();
+            key.setMargin(6, 0, 0, 0);
+            key.MouseLeftButtonDown += (e , ev) => action.Invoke(e);
+            return key;
+        }
+        private Key init_key(string _key, Action action, string sing = null!)
+        {
+            Key key = new Key();
+            key.numberKey();
+            key.setISenderKey(senderKey);
+            key.Focusable = false;
+            key.setKey(_key);
+            if (sing is not null)
+                key.setSing(sing);
+            key.toLowerCase();
+            key.setMargin(6, 0, 0, 0);
+            key.MouseLeftButtonDown += (e, ev) => action.Invoke();
+            return key;
+        }
+
+
+        private void clickNormalKey(object sender)
+        {
+
+            string _key = string.Empty;
+            if(focusShift)
+                click_shift();
+            _key = (sender as Key)!.key.Text;
+            FocusEl();
+            senderKey.sendKey(_key);
+        }
+
+        private Key init_q()
+        {
+            Key key = init_key("q" , clickNormalKey);
+            
+            return key;
+        }
+
+        private void click_delete()
+        {
+            if (focusEl is null)
+                return;
+
+            focusEl.Text = string.Empty;
+
+        }
+      
+
+        private Key init_w()
+        {
+            Key key = init_key("w" , clickNormalKey);
             return key;
         }
         private Key init_e()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("e");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("e" , clickNormalKey);
             return key;
         }
         private Key init_r()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("r");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("r" , clickNormalKey);
+
             return key;
         }
         private Key init_t()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("t");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("t" , clickNormalKey);
             return key;
         }
         private Key init_y()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("y");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("y" , clickNormalKey);
             return key;
         }
         private Key init_u()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("u");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("u" , clickNormalKey);
             return key;
         }
         private Key init_i()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("i");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("i" , clickNormalKey);
             return key;
         }
         private Key init_o()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("o");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("o" , clickNormalKey);
             return key;
         }
         private Key init_p()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("p");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("p" , clickNormalKey);
             return key;
         }
         private Key init_keryl_left()
         {
-            Key key = new Key();
-            key.singWithKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("[");
-            key.setSing("{");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("[" , clickNormalKey, "{" );
             return key;
         }
         private Key init_keryl_right()
         {
-            Key key = new Key();
-            key.singWithKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("]");
-            key.setSing("}");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("]", clickNormalKey, "}");
             return key;
         }
         private Key init_pipe()
         {
-            Key key = new Key();
-            key.singWithKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("\\");
-            key.setSing("|");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("\\", clickNormalKey, "|");
             return key;
         }
         private Key init_back()
         {
-            Key key = new Key();
-            key.keyDowenRight();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("Back");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("Back" , click_back);
             return key;
         }
         private Key init_7()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("7");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("7" , clickNormalKey);
+
             return key;
         }
         private Key init_8()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("8");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("8" , clickNormalKey);
             return key;
         }
         private Key init_9()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-             
-            key.setKey("9");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("9" , clickNormalKey);
             return key;
         }
 
@@ -271,165 +296,82 @@ namespace keyboard.UsersControlls
         }
         private Key init_caps_lock()
         {
-            Key key = new Key();
-            key.keyDowenLeft();
-            key.setISenderKey(senderKey);
-            key.setKey("caps lock");
-            key.toLowerCase();
-            key.setMargin(0, 0, 0, 0);
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("caps lock" , click_capslk);
             return key;
         }
         private Key init_a()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setKey("a");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("a" , clickNormalKey);
             return key;
         }
         private Key init_s()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("s");
-            key.toLowerCase();
+            Key key = init_key("s" , clickNormalKey);
             return key;
         }
         private Key init_d()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("d");
-            key.toLowerCase();
+            Key key = init_key("d" , clickNormalKey);
             return key;
         }
         private Key init_f()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("f");
-            key.toLowerCase();
+            Key key = init_key("f" , clickNormalKey);
             return key;
         }
         private Key init_g()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("g");
-            key.toLowerCase();
+            Key key = init_key("g" , clickNormalKey);
             return key;
         }
         private Key init_h()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("h");
-            key.toLowerCase();
+            Key key = init_key("h" , clickNormalKey);
             return key;
         }
         private Key init_j()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("j");
-            key.toLowerCase();
+            Key key = init_key("j" , clickNormalKey);
             return key;
         }
         private Key init_k()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("k");
-            key.toLowerCase();
+            Key key = init_key("k" , clickNormalKey);
             return key;
         }
         private Key init_l()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("l");
-            key.toLowerCase();
+            Key key = init_key("l" , clickNormalKey);
             return key;
         }
         private Key init_simecolen()
         {
-            Key key = new Key();
-            key.singWithKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey(";");
-            key.setSing(":");
-            key.toLowerCase();
+            Key key = init_key(";" , clickNormalKey, ":");
             return key;
         }
         private Key init_singel_qotiation()
         {
-            Key key = new Key();
-            key.singWithKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("'");
-            key.setSing("\"");
-            key.toLowerCase();
+            Key key = init_key("'"  , clickNormalKey, "\"");
             return key;
         }
         private Key init_enter()
         {
-            Key key = new Key();
-            key.keyDowenRight();
-            key.setISenderKey(senderKey);
-            key.setKey("Enter");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("Enter" , clickNormalKey);
             return key;
         }
         private Key init_4()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("4");
-            key.toLowerCase();
+            Key key = init_key("4" , clickNormalKey);
             return key;
         }
         private Key init_5()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("5");
-            key.toLowerCase();
+            Key key = init_key("5" , clickNormalKey);
             return key;
         }
         private Key init_6()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("6");
-            key.toLowerCase();
+            Key key = init_key("6" , clickNormalKey);
             return key;
         }
 
@@ -458,165 +400,82 @@ namespace keyboard.UsersControlls
         }
         private Key init_shift()
         {
-            Key key = new Key();
-            key.keyDowenLeft();
-            key.setISenderKey(senderKey);
-            key.setKey("shift");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("shift" , click_shift);
             return key;
         }
         private Key init_z()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setKey("z");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("z" , clickNormalKey);
             return key;
         }
         private Key init_x()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("x");
-            key.toLowerCase();
+            Key key = init_key("x" , clickNormalKey);
             return key;
         }
         private Key init_c()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("c");
-            key.toLowerCase();
+            Key key = init_key("c" , clickNormalKey);
             return key;
         }
         private Key init_v()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("v");
-            key.toLowerCase();
+            Key key = init_key("v", clickNormalKey);
             return key;
         }
         private Key init_b()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("b");
-            key.toLowerCase();
+            Key key = init_key("b" , clickNormalKey);
             return key;
         }
         private Key init_n()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("n");
-            key.toLowerCase();
+            Key key = init_key("n" , clickNormalKey);
             return key;
         }
         private Key init_m()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("m");
-            key.toLowerCase();
+            Key key = init_key("m" , clickNormalKey);
             return key;
         }
         private Key init_dot()
         {
-            Key key = new Key();
-            key.singWithKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey(".");
-            key.setSing(">");
-            key.toLowerCase();
+            Key key = init_key("." , clickNormalKey , ">");
             return key;
         }
         private Key init_question_mark()
         {
-            Key key = new Key();
-            key.singWithKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("/");
-            key.setSing("?");
-            key.toLowerCase();
+            Key key = init_key("/" ,  clickNormalKey ,"?") ;
             return key;
         }
         private Key init_smarler_than()
         {
-            Key key = new Key();
-            key.singWithKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey(",");
-            key.setSing("<");
-            key.toLowerCase();
+            Key key = init_key(","  , clickNormalKey, "<");
             return key;
         }
         private Key init_up()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("up");
-            key.toLowerCase();
+            Key key = init_key("up" , clickNormalKey);
             return key;
         }
         private Key init_delete()
         {
-            Key key = new Key();
-            key.keyDowenRight();
-            key.setISenderKey(senderKey);
-            key.setKey("delete");
-            key.toLowerCase();
-            key.setMargin(6, 0, 0, 0);
+            Key key = init_key("delete"  , click_delete);
             return key;
         }
         private Key init_1()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("1");
-            key.toLowerCase();
+            Key key = init_key("1" , clickNormalKey);
             return key;
         }
         private Key init_2()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("2");
-            key.toLowerCase();
+            Key key = init_key("2" , clickNormalKey);
             return key;
         }
         private Key init_3()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("3");
-            key.toLowerCase();
+            Key key = init_key("3" , clickNormalKey);
             return key;
         }
         // end row 3
@@ -635,92 +494,47 @@ namespace keyboard.UsersControlls
         }
         private Key init_eng()
         {
-            Key key = new Key();
-            key.keyDowenLeft();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("Eng");
-            //key.toLowerCase();
+            Key key = init_key("eng" , clickNormalKey);
             return key;
         }
         private Key init_ctrl()
         {
-            Key key = new Key();
-            key.keyDowenLeft();
-            key.setISenderKey(senderKey);
-            key.setKey("Ctrl");
-            key.setMargin(6, 0, 0, 0);
-            //key.toLowerCase();
+            Key key = init_key("ctrl" , clickNormalKey);
             return key;
         }
         private Key init_space()
         {
-            Key key = new Key();
-            key.keyDowenLeft();
-            key.setISenderKey(senderKey);
-            key.setKey(" ");
-            key.setMargin(6, 0, 0, 0);
-            //key.toLowerCase();
+            Key key = init_key(" " , clickNormalKey);
             return key;
         }
         private Key init_left()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("left");
-            key.toLowerCase();
+            Key key = init_key("left" , clickNormalKey);
             return key;
         }
         private Key init_dowen()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("dowen");
-            key.toLowerCase();
+            Key key = init_key("down" , clickNormalKey);
             return key;
         }
         private Key init_right()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("right");
-            key.toLowerCase();
+            Key key = init_key("right" , clickNormalKey);
             return key;
         }
         private Key init_at_sing()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("@");
-            key.toLowerCase();
+            Key key = init_key("@" , clickNormalKey);
             return key;
         }
         private Key init_0()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey("0");
-            key.toLowerCase();
+            Key key = init_key("0" , clickNormalKey);
             return key;
         }
         private Key init_dot_along()
         {
-            Key key = new Key();
-            key.numberKey();
-            key.setISenderKey(senderKey);
-            key.setMargin(6, 0, 0, 0);
-            key.setKey(".");
-            key.toLowerCase();
+            Key key = init_key("." , clickNormalKey);
             return key;
         }
 
