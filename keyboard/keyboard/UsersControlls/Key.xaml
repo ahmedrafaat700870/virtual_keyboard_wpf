@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:keyboard.UsersControlls"
              mc:Ignorable="d" 
-             Margin="0 , 0 , 0 ,0"
-             d:DesignHeight="43.1" d:DesignWidth="44.5">
+             d:DesignHeight="43.1" d:DesignWidth="44.5"
+             VerticalAlignment="Stretch"
+             HorizontalAlignment="Stretch"
+             Padding="0 , 5 , 0 ,5"
+             Margin="6, 0 ,0 ,0"
+             >
     <UserControl.Resources>
         <Style TargetType="Border" x:Key="borderStyle" >
             <Setter Property="BorderBrush" Value="#90A3BF" />
@@ -22,7 +26,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <Style TargetType="Border" x:Key="borderStyleMouseEnter" BasedOn="{StaticResource borderStyle}">
+            <Setter Property="BorderBrush" Value="MintCream" />
+        </Style>
 
         <Style TargetType="TextBlock" x:Key="normal_key">
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -63,13 +69,16 @@
 
 
     </UserControl.Resources>
-    <Border Style="{StaticResource borderStyle}" x:Name="border_key_sing">
+    <Border Style="{StaticResource borderStyle}" x:Name="border_key_sing" Padding="5" MouseEnter="border_key_sing_MouseEnter" MouseLeave="border_key_sing_MouseLeave"> 
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition  Height="auto" />
                 <RowDefinition MinHeight=".5"  />
             </Grid.RowDefinitions>
-            <TextBlock  Grid.Row="0" Text="k" x:Name="sing" Style="{StaticResource singWithKey}" />
+            <TextBlock  Grid.Row="0" Text="k" x:Name="sing" Style="{StaticResource singWithKey}" >
+                
+            </TextBlock>
             <TextBlock  Grid.Row="1" Text="k" x:Name="key" Style="{StaticResource singWithKey}" />
         </Grid>
     </Border>

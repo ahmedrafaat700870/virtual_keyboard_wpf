@@ -5,7 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:keyboard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="900"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        MouseLeftButtonUp="Window_MouseLeftButtonUp"
+        MouseMove="Window_MouseMove"
+        >
     <Window.Resources>
         <Style TargetType="Border" x:Key="mainBorder">
             <Setter Property="Background"  >
@@ -40,7 +49,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock  Grid.Column="0" Text="ONEPOS Keyboar" Style="{StaticResource mainTextLeft}"/>
-                <TextBlock Grid.Column="1" Text="X" Style="{StaticResource mainTextRight}" FontSize="25" />
+                <TextBlock Cursor="Hand" x:Name="exit" MouseLeftButtonDown="exit_MouseLeftButtonDown" Grid.Column="1" Text="X" Style="{StaticResource mainTextRight}" FontSize="25" />
             </Grid>
             <Grid Grid.Row="1">
             </Grid>

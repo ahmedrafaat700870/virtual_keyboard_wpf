@@ -50,3 +50,4 @@ C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\
 C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.csproj.CopyComplete
 C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\keyboard.genruntimeconfig.cache
 C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\ref\keyboard.dll
+C:\Users\TEFA\Desktop\virtual keyboard\New folder\virtual_keyboard_wpf\keyboard\keyboard\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
