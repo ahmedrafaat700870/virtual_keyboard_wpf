@@ -1,4 +1,6 @@
-﻿using System;
+﻿using keyboard.UsersControlls.classes;
+using keyboard.UsersControlls.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +21,14 @@ namespace keyboard.UsersControlls
     /// <summary>
     /// Interaction logic for KeyBoard.xaml
     /// </summary>
-    public partial class KeyBoard : UserControl
+    public partial class KeyBoard : UserControl , IKeyBoard
     {
         private ISenderKey senderkey;
 
         private Dictionary<string  ,Key> Keys = null!;
-        private InitKyes initkeys = null!;
+        private IInitKeys initkeys = null!;
         private TextBox focusEl = null!;
+
         public void setFocusEl(TextBox el)
         {
             this.focusEl = el;
@@ -34,21 +37,24 @@ namespace keyboard.UsersControlls
         {
             InitializeComponent();
             senderkey = new SendKey();
-            InitKyes initKyes = new InitKyes(this.senderkey);
         }
 
         public void Init()
         {
+
             Keys = new Dictionary<string, Key>();
             initkeys = new InitKyes(senderkey);
+            initkeys.setFocusEl(focusEl);
             Keys = initkeys.getKeys();
             IntitializeGrid_0();
             IntitializeGrid_1();
             IntitializeGrid_2();
             IntitializeGrid_3();
+
         }
         private void IntitializeGrid_0()
         {
+
             addChilderToUniGrid(this.row_0_column_0, Keys["q"]);
             addChilderToUniGrid(this.row_0_column_0, Keys["w"]);
             addChilderToUniGrid(this.row_0_column_0, Keys["e"]);
@@ -62,17 +68,18 @@ namespace keyboard.UsersControlls
             addChilderToUniGrid(this.row_0_column_0, Keys["{"]);
             addChilderToUniGrid(this.row_0_column_0, Keys["}"]);
             addChilderToUniGrid(this.row_0_column_0, Keys["|"]);
+
             row_0_column_1.Content =  Keys["back"].Content;
             row_0_column_1.MouseLeftButtonDown += (e, ev) => initkeys.click_back();
+
             addChilderToUniGrid(this.row_0_column_2, Keys["7"]);
             addChilderToUniGrid(this.row_0_column_2, Keys["8"]);
             addChilderToUniGrid(this.row_0_column_2, Keys["9"]);
 
-           
-
         }
         private void IntitializeGrid_1()
         {
+
             this.row_1_column_0.Content = Keys["capsLoock"].Content;
             row_1_column_0.MouseLeftButtonDown += (e, ev) => initkeys.click_capslk();
 
@@ -87,8 +94,10 @@ namespace keyboard.UsersControlls
             addChilderToUniGrid(this.row_1_column_1, Keys["l"]);
             addChilderToUniGrid(this.row_1_column_1, Keys[";"]);
             addChilderToUniGrid(this.row_1_column_1, Keys["'"]);
+
             this.row_1_column_2.Content = Keys["enter"].Content;
             row_1_column_2.MouseLeftButtonDown += (e, ev) => initkeys.click_back();
+
             addChilderToUniGrid(this.row_1_column_3, Keys["4"]);
             addChilderToUniGrid(this.row_1_column_3, Keys["5"]);
             addChilderToUniGrid(this.row_1_column_3, Keys["6"]);
@@ -113,6 +122,7 @@ namespace keyboard.UsersControlls
             addChilderToUniGrid(this.row_2_column_1, Keys["up"]);
 
             this.row_2_column_2.Content = Keys["delete"].Content;
+            this.row_2_column_2.MouseLeftButtonDown += (e  ,ev) => initkeys.click_delete();
 
             addChilderToUniGrid(this.row_2_column_3, Keys["1"]);
             addChilderToUniGrid(this.row_2_column_3, Keys["2"]);
@@ -121,10 +131,12 @@ namespace keyboard.UsersControlls
         }
         private void IntitializeGrid_3()
         {
+
             addChilderToUniGrid(this.row_3_column_0, Keys["eng"]);
             addChilderToUniGrid(this.row_3_column_0, Keys["ctrl"]);
 
             this.row_3_column_1.Content = Keys["space"].Content;
+            this.row_3_column_1.MouseLeftButtonDown += (e, ev) => initkeys.click_space();
 
             addChilderToUniGrid(this.row_3_column_2 , Keys["left"]);
             addChilderToUniGrid(this.row_3_column_2 , Keys["dowen"]);
@@ -132,8 +144,9 @@ namespace keyboard.UsersControlls
             addChilderToUniGrid(this.row_3_column_2 , Keys["at_sing"]);
 
             this.row_3_column_3.Content = Keys["0"].Content;
-
+            this.row_3_column_3.MouseLeftButtonDown += (e , ev) => initkeys.click_zero();
             this.row_3_column_4.Content = Keys["._algone"].Content;
+            this.row_3_column_4.MouseLeftButtonDown += (e, ev) => initkeys.click_dot();
        
         }
         private void addChilderToUniGrid(UniformGrid grid ,  Key? key)

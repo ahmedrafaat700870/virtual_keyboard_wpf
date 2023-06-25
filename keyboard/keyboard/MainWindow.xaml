@@ -17,6 +17,7 @@
         Focusable="False"
         >
     <Window.Resources>
+        
         <Style TargetType="Border" x:Key="mainBorder">
             <Setter Property="Background"  >
                 <Setter.Value>
@@ -37,6 +38,7 @@
             <Setter Property="HorizontalAlignment" Value="Right" />
             <Setter Property="Margin" Value="0, 0 , 5 ,0" />
         </Style>
+        
     </Window.Resources>
     <Border Style="{StaticResource mainBorder}" Padding="5">
         <Grid>
