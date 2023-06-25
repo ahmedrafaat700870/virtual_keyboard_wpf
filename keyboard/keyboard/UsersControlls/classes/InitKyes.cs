@@ -16,7 +16,7 @@ namespace keyboard.UsersControlls.classes
     public class InitKyes : IInitKeys
     {
         private readonly ISenderKey senderKey = null!;
-        private Dictionary<string, Key> Keys = null!;
+        private Dictionary<string, IKey> Keys = null!;
         private bool isUpperCase = !true;
         private bool focusShift = false;
         private TextBox focusEl = null!;
@@ -30,7 +30,7 @@ namespace keyboard.UsersControlls.classes
             isUpperCase = !isUpperCase;
             foreach (var key in Keys.Keys)
             {
-                Key k = Keys[key];
+                IKey k = Keys[key];
                 k.toUpperCase();
             }
         }
@@ -39,7 +39,7 @@ namespace keyboard.UsersControlls.classes
             isUpperCase = !isUpperCase;
             foreach (var key in Keys.Keys)
             {
-                Key k = Keys[key];
+                IKey k = Keys[key];
                 k.toLowerCase();
             }
         }
@@ -73,6 +73,15 @@ namespace keyboard.UsersControlls.classes
         {
             focusEl = el;
         }
+        public void clickEnter()
+        {
+            if (this.focusEl is null) return;
+
+            int caretIndex = this.focusEl.CaretIndex;
+            string text = this.focusEl.Text;
+            this.focusEl.Text = text.Insert(caretIndex, Environment.NewLine);
+            this.focusEl.CaretIndex = caretIndex + Environment.NewLine.Length;
+        }
         private void FocusEl()
         {
             if (focusEl != null)
@@ -80,7 +89,7 @@ namespace keyboard.UsersControlls.classes
                 focusEl.Focus();
             }
         }
-        public Dictionary<string, Key> getKeys()
+        public Dictionary<string, IKey> getKeys()
         {
             if (Keys is null)
                 Init();
@@ -89,7 +98,7 @@ namespace keyboard.UsersControlls.classes
 
         private void Init()
         {
-            Keys = new Dictionary<string, Key>();
+            Keys = new Dictionary<string, IKey>();
 
             init_first_row();
             init_second_row();
@@ -219,64 +228,88 @@ namespace keyboard.UsersControlls.classes
             if (SelectionStart >= focusEl.Text.Length) return;
             focusEl.SelectionStart = SelectionStart + 1;
         }
-        private void click_up() { }
-        private void click_down() { }
+        private void click_up() 
+        {
+            if(focusEl is null) return;
+
+            int caretIndex = this.focusEl.CaretIndex;
+            int lineIndex = this.focusEl.GetLineIndexFromCharacterIndex(caretIndex);
+
+            if (lineIndex > 0)
+            {
+                int previousLineStart = this.focusEl.GetCharacterIndexFromLineIndex(lineIndex - 1);
+                this.focusEl.CaretIndex = previousLineStart;
+            }
+        }
+        private void click_down() 
+        {
+
+            int caretIndex = this.focusEl.CaretIndex;
+            int lineIndex = this.focusEl.GetLineIndexFromCharacterIndex(caretIndex);
+            int lineCount = this.focusEl.LineCount;
+
+            if (lineIndex < lineCount - 1)
+            {
+                int nextLineStart = this.focusEl.GetCharacterIndexFromLineIndex(lineIndex + 1);
+                this.focusEl.CaretIndex = nextLineStart;
+            }
+        }
 
         private Key init_q()
         {
-            Key key = init_key("q", clickNormalKey);
+            Key key = init_key("q", clickNormalKey  , string.Empty);
 
             return key;
         }
         private Key init_w()
         {
-            Key key = init_key("w", clickNormalKey);
+            Key key = init_key("w", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_e()
         {
-            Key key = init_key("e", clickNormalKey);
+            Key key = init_key("e", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_r()
         {
-            Key key = init_key("r", clickNormalKey);
+            Key key = init_key("r", clickNormalKey , string.Empty);
 
             return key;
         }
         private Key init_t()
         {
-            Key key = init_key("t", clickNormalKey);
+            Key key = init_key("t", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_y()
         {
-            Key key = init_key("y", clickNormalKey);
+            Key key = init_key("y", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_u()
         {
-            Key key = init_key("u", clickNormalKey);
+            Key key = init_key("u", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_i()
         {
-            Key key = init_key("i", clickNormalKey);
+            Key key = init_key("i", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_o()
         {
-            Key key = init_key("o", clickNormalKey);
+            Key key = init_key("o", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_p()
         {
-            Key key = init_key("p", clickNormalKey);
+            Key key = init_key("p", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_keryl_left()
         {
-            Key key = init_key("[", clickNormalKey, "{");
+            Key key = init_key("[", clickNormalKey ,  "{");
             return key;
         }
         private Key init_keryl_right()
@@ -296,18 +329,18 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_7()
         {
-            Key key = init_key("7", clickNormalKey);
+            Key key = init_key("7", clickNormalKey , string.Empty);
 
             return key;
         }
         private Key init_8()
         {
-            Key key = init_key("8", clickNormalKey);
+            Key key = init_key("8", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_9()
         {
-            Key key = init_key("9", clickNormalKey);
+            Key key = init_key("9", clickNormalKey , string.Empty);
             return key;
         }
 
@@ -340,47 +373,47 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_a()
         {
-            Key key = init_key("a", clickNormalKey);
+            Key key = init_key("a", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_s()
         {
-            Key key = init_key("s", clickNormalKey);
+            Key key = init_key("s", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_d()
         {
-            Key key = init_key("d", clickNormalKey);
+            Key key = init_key("d", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_f()
         {
-            Key key = init_key("f", clickNormalKey);
+            Key key = init_key("f", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_g()
         {
-            Key key = init_key("g", clickNormalKey);
+            Key key = init_key("g", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_h()
         {
-            Key key = init_key("h", clickNormalKey);
+            Key key = init_key("h", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_j()
         {
-            Key key = init_key("j", clickNormalKey);
+            Key key = init_key("j", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_k()
         {
-            Key key = init_key("k", clickNormalKey);
+            Key key = init_key("k", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_l()
         {
-            Key key = init_key("l", clickNormalKey);
+            Key key = init_key("l", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_simecolen()
@@ -395,22 +428,25 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_enter()
         {
-            Key key = init_key("Enter", clickNormalKey);
+            Key key = init_key("Enter", clickEnter , string.Empty);
             return key;
         }
+
+       
+
         private Key init_4()
         {
-            Key key = init_key("4", clickNormalKey);
+            Key key = init_key("4", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_5()
         {
-            Key key = init_key("5", clickNormalKey);
+            Key key = init_key("5", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_6()
         {
-            Key key = init_key("6", clickNormalKey);
+            Key key = init_key("6", clickNormalKey , string.Empty);
             return key;
         }
 
@@ -445,37 +481,37 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_z()
         {
-            Key key = init_key("z", clickNormalKey);
+            Key key = init_key("z", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_x()
         {
-            Key key = init_key("x", clickNormalKey);
+            Key key = init_key("x", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_c()
         {
-            Key key = init_key("c", clickNormalKey);
+            Key key = init_key("c", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_v()
         {
-            Key key = init_key("v", clickNormalKey);
+            Key key = init_key("v", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_b()
         {
-            Key key = init_key("b", clickNormalKey);
+            Key key = init_key("b", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_n()
         {
-            Key key = init_key("n", clickNormalKey);
+            Key key = init_key("n", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_m()
         {
-            Key key = init_key("m", clickNormalKey);
+            Key key = init_key("m", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_dot()
@@ -505,17 +541,17 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_1()
         {
-            Key key = init_key("1", clickNormalKey);
+            Key key = init_key("1", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_2()
         {
-            Key key = init_key("2", clickNormalKey);
+            Key key = init_key("2", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_3()
         {
-            Key key = init_key("3", clickNormalKey);
+            Key key = init_key("3", clickNormalKey , string.Empty);
             return key;
         }
         // end row 3
@@ -534,12 +570,12 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_eng()
         {
-            Key key = init_key("eng", clickNormalKey);
+            Key key = init_key("eng", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_ctrl()
         {
-            Key key = init_key("ctrl", clickNormalKey);
+            Key key = init_key("ctrl", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_space()
@@ -564,17 +600,17 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_at_sing()
         {
-            Key key = init_key("@", clickNormalKey);
+            Key key = init_key("@", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_0()
         {
-            Key key = init_key("0", clickNormalKey);
+            Key key = init_key("0", clickNormalKey , string.Empty);
             return key;
         }
         private Key init_dot_along()
         {
-            Key key = init_key(".", clickNormalKey);
+            Key key = init_key(".", clickNormalKey , string.Empty);
             return key;
         }
 

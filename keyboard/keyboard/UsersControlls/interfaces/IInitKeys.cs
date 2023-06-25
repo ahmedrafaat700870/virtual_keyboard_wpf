@@ -13,11 +13,12 @@ namespace keyboard.UsersControlls.interfaces
         public void click_back();
         public void click_capslk();
         public void setFocusEl(TextBox el);
-        public Dictionary<string, Key> getKeys();
+        public Dictionary<string, IKey> getKeys();
         public void click_delete();
         public void click_space();
         public void click_zero();
         public void click_dot();
+        public void clickEnter();
 
     }
 }

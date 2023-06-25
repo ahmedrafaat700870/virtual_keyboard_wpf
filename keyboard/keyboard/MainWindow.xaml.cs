@@ -16,6 +16,7 @@ using WindowsInput;
 using System.Runtime.InteropServices;
 using keyboard.UsersControlls;
 using System.Windows.Input;
+using keyboard.UsersControlls.interfaces;
 
 namespace keyboard
 {
@@ -25,7 +26,7 @@ namespace keyboard
     public partial class MainWindow : Window
     {
 
-        private KeyBoard keyboard = null!;
+        private IKeyBoard keyboard = null!;
 
         private bool isDragging = false;
 
@@ -38,10 +39,11 @@ namespace keyboard
             InitializeComponent();
             int width = Convert.ToInt32( screenWidth * 0.75);
             this.Width = width;
+            // en keyboard
             keyboard = new KeyBoard();
             keyboard.setFocusEl(El);
             keyboard.Init();
-            this.mainKeyboard.Content = keyboard.Content;
+            this.mainKeyboard.Content = (keyboard as UserControl)!.Content;
         }
 
         private void exit_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -72,6 +74,23 @@ namespace keyboard
                 Left += deltaX;
                 Top += deltaY;
             }
+        }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            keyboard.SuimolateKeyPress(e.Key);
+        }
+
+        private void AR_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            keyboard.changLang(KeyBoard.LangKeyBoard.AR);
+            keyboard.Init();
+        }
+
+        private void EN_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            keyboard.changLang(KeyBoard.LangKeyBoard.EN);
+            keyboard.Init();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using keyboard.UsersControlls.interfaces;
 using WindowsInput.Native;
 
@@ -21,24 +23,30 @@ namespace keyboard.UsersControlls
     /// <summary>
     /// Interaction logic for Key.xaml
     /// </summary>
-    public partial class Key : UserControl
+    public partial class Key : UserControl , IKey
     {
-
+        private DispatcherTimer timer = null!;
         private ISenderKey SenderKey { get; set; } = null!;
         public Key()
         {
             InitializeComponent();
+            this.MouseLeftButtonDown += mouseLeftButtonDown ;
         }
 
-
-        public void click_key()
+        private  void mouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            borderMouseEnter();
-            Thread.Sleep(200);
-            borderMouseLeave();
-
+            /*timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(0.1);
+            timer.Tick += click_key!;
+            timer.Start();*/
         }
 
+        public void  click_key(object sender  , EventArgs e)
+        { 
+            /*borderMouseEnter();
+            timer.Stop();
+            borderMouseLeave();*/
+        }
 
         public void clickUpperCase()
         {
@@ -48,7 +56,6 @@ namespace keyboard.UsersControlls
         {
             SenderKey.sendKey(this.key.Text);
         }
-
 
         public void setMargin(double left , double up , double right , double dowen)
         {
@@ -94,37 +101,43 @@ namespace keyboard.UsersControlls
         }
         public void toUpperCase()
         {
-            this.key.Text = this.key.Text.ToUpper();
+            if (string.IsNullOrEmpty(this.sing.Text))
+                this.key.Text = this.key.Text.ToUpper();
+            else
+                convertSingWithKey();
         }
         public void toLowerCase()
         {
-            this.key.Text = this.key.Text.ToLower();
+            if (string.IsNullOrEmpty(this.sing.Text))
+                this.key.Text = this.key.Text.ToLower();
+            else
+                convertSingWithKey();
         }
-
+        private void convertSingWithKey()
+        {
+            string temp = this.key.Text;
+            this.key.Text = this.sing.Text;
+            this.sing.Text = temp;
+        }
         private void border_key_sing_MouseEnter(object sender, MouseEventArgs e)
         {
             borderMouseEnter();
         }
-
         private void border_key_sing_MouseLeave(object sender, MouseEventArgs e)
         {
             borderMouseLeave();
         }
-
-        private void borderMouseEnter()
+        private Task borderMouseEnter()
         {
             border_key_sing.Style = this.Resources["borderStyleMouseEnter"] as Style;
+            return null!;
         }
-        private void borderMouseLeave()
+        private Task borderMouseLeave()
         {
             border_key_sing.Style = this.Resources["borderStyle"] as Style;
+            return null!;
         }
 
-        
-
-        private void border_key_sing_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            SenderKey.sendKey("j");
-        }
+       
     }
 }

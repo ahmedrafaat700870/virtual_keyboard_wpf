@@ -15,6 +15,7 @@
         MouseLeftButtonUp="Window_MouseLeftButtonUp"
         MouseMove="Window_MouseMove"
         Focusable="False"
+        PreviewKeyDown="Window_PreviewKeyDown"
         >
     <Window.Resources>
         
@@ -49,13 +50,18 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions >
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition Width=".6*"/>
+                    <ColumnDefinition Width=".2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock  Grid.Column="0" Text="ONEPOS Keyboar" Style="{StaticResource mainTextLeft}"/>
-                <TextBlock Cursor="Hand" x:Name="exit" MouseLeftButtonDown="exit_MouseLeftButtonDown" Grid.Column="1" Text="X" Style="{StaticResource mainTextRight}" FontSize="25" />
+                <Grid Grid.Column="1">
+                    <TextBlock Cursor="Hand" MouseLeftButtonDown="AR_MouseLeftButtonDown" FontSize="24" FontWeight="Bold" Margin="30 , 0 , 0,0" Text="AR" x:Name="AR" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBlock Cursor="Hand" MouseLeftButtonDown="EN_MouseLeftButtonDown" FontSize="24" FontWeight="Bold" Margin="0 , 0 , 30,0" Text="EN" x:Name="EN" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                </Grid>
+                <TextBlock Cursor="Hand" x:Name="exit" MouseLeftButtonDown="exit_MouseLeftButtonDown" Grid.Column="2" Text="X" Style="{StaticResource mainTextRight}" FontSize="25" />
             </Grid>
-            <TextBox  Grid.Row="1" x:Name="El" />
+            <TextBox AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Grid.Row="1" x:Name="El" />
             
             <UserControl   x:Name="mainKeyboard" Grid.Row="2"/>
         </Grid>

@@ -77,10 +77,10 @@
                 <RowDefinition  Height="auto" />
                 <RowDefinition MinHeight=".5"  />
             </Grid.RowDefinitions>
-            <TextBlock  Grid.Row="0" Text="k" x:Name="sing" Style="{StaticResource singWithKey}" >
+            <TextBlock  Grid.Row="0" Text="" x:Name="sing" Style="{StaticResource singWithKey}" >
                 
             </TextBlock>
-            <TextBlock  Grid.Row="1" Text="k" x:Name="key" Style="{StaticResource singWithKey}" />
+            <TextBlock  Grid.Row="1" Text="" x:Name="key" Style="{StaticResource singWithKey}" />
         </Grid>
         </Border>
     </Grid>
