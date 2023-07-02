@@ -56,10 +56,12 @@ namespace keyboard.UsersControlls
         }
         public void changLang(LangKeyBoard newLang)
         {
+            Reset();
             this.lang = newLang;
         }
         public void Init()
         {
+
             if(Keys is null)
                 Keys = new Dictionary<string, IKey>();
             initkeys = FactoryInitKeys(senderkey);
@@ -70,6 +72,17 @@ namespace keyboard.UsersControlls
             IntitializeGrid_2();
             IntitializeGrid_3();
 
+        }
+        private void Reset()
+        {
+            this.row_1_column_0 = new Key();
+            this.row_0_column_1 = new Key();
+            this.row_1_column_2 = new Key();
+            this.row_2_column_0 = new Key();
+            this.row_2_column_2 = new Key();
+            this.row_3_column_1 = new Key();
+            this.row_3_column_3 = new Key();
+            this.row_3_column_4 = new Key();
         }
         private void IntitializeGrid_0()
         {

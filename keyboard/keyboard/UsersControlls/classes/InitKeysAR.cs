@@ -304,22 +304,22 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_keryl_left()
         {
-            Key key = init_key("ج", clickNormalKey, "{");
+            Key key = init_key("ج", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_keryl_right()
         {
-            Key key = init_key("د", clickNormalKey, "}");
+            Key key = init_key("د", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_pipe()
         {
-            Key key = init_key("\\", clickNormalKey, "|");
+            Key key = init_key("ذ", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_back()
         {
-            Key key = init_key("Back", click_back);
+            Key key = init_key("back", click_back);
             return key;
         }
         private Key init_7()
@@ -368,57 +368,57 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_a()
         {
-            Key key = init_key("a", clickNormalKey, string.Empty);
+            Key key = init_key("ش", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_s()
         {
-            Key key = init_key("s", clickNormalKey, string.Empty);
+            Key key = init_key("س", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_d()
         {
-            Key key = init_key("d", clickNormalKey, string.Empty);
+            Key key = init_key("ي", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_f()
         {
-            Key key = init_key("f", clickNormalKey, string.Empty);
+            Key key = init_key("ب", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_g()
         {
-            Key key = init_key("g", clickNormalKey, string.Empty);
+            Key key = init_key("ل", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_h()
         {
-            Key key = init_key("h", clickNormalKey, string.Empty);
+            Key key = init_key("ا", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_j()
         {
-            Key key = init_key("j", clickNormalKey, string.Empty);
+            Key key = init_key("ت", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_k()
         {
-            Key key = init_key("k", clickNormalKey, string.Empty);
+            Key key = init_key("ن", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_l()
         {
-            Key key = init_key("l", clickNormalKey, string.Empty);
+            Key key = init_key("م", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_simecolen()
         {
-            Key key = init_key(";", clickNormalKey, ":");
+            Key key = init_key("ك", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_singel_qotiation()
         {
-            Key key = init_key("'", clickNormalKey, "\"");
+            Key key = init_key("ط", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_enter()
@@ -476,52 +476,52 @@ namespace keyboard.UsersControlls.classes
         }
         private Key init_z()
         {
-            Key key = init_key("z", clickNormalKey, string.Empty);
+            Key key = init_key("ئ", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_x()
         {
-            Key key = init_key("x", clickNormalKey, string.Empty);
+            Key key = init_key("ء", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_c()
         {
-            Key key = init_key("c", clickNormalKey, string.Empty);
+            Key key = init_key("ؤ", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_v()
         {
-            Key key = init_key("v", clickNormalKey, string.Empty);
+            Key key = init_key("ر", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_b()
         {
-            Key key = init_key("b", clickNormalKey, string.Empty);
+            Key key = init_key("لا", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_n()
         {
-            Key key = init_key("n", clickNormalKey, string.Empty);
+            Key key = init_key("ى", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_m()
         {
-            Key key = init_key("m", clickNormalKey, string.Empty);
+            Key key = init_key("ة", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_dot()
         {
-            Key key = init_key(".", clickNormalKey, ">");
+            Key key = init_key("و", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_question_mark()
         {
-            Key key = init_key("/", clickNormalKey, "?");
+            Key key = init_key("ز", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_smarler_than()
         {
-            Key key = init_key(",", clickNormalKey, "<");
+            Key key = init_key("ظ", clickNormalKey, string.Empty);
             return key;
         }
         private Key init_up()
